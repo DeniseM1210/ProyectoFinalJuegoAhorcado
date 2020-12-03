@@ -1,3 +1,5 @@
+import random
+
 
 class JuegoAhorcado:
 
@@ -19,6 +21,10 @@ class JuegoAhorcado:
                 cont = True
 
         return listaPalab
+
+    def elegirPalabra(self, listaPalab):
+        return (listaPalab[int(random.randrange(len(listaPalab)))])
+
 
 
 

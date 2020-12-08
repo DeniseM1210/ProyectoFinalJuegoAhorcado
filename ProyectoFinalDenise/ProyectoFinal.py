@@ -20,8 +20,8 @@ class ManipulacionDeArchivos:
 
         for linea in palabras.read().rsplit():
             listaPalab.append(linea.upper())
-        palabras.close()
-        return len(listaPalab)
+            palabras.close()
+            return len(listaPalab)
 
     def ingresarPalabras(self):
         cont = False
@@ -55,12 +55,30 @@ class ManipulacionDeArchivos:
     def borrarPalabras(self):
         open("Palabras.txt", "w").write("")
 
+    def ordenShellSort(self, palabras):
+        n = len(palabras)
+        intervalo = n / 2
 
+        while(intervalo > 0):
+            for i in range(int(intervalo), n):
+                val = palabras[i]
+                j = i
 
+                while((j >= int(intervalo)) and (palabras[j - int(intervalo)] > val)):
+                    palabras[j] = palabras[j - int(intervalo)]
+                    j -= int(intervalo)
 
+                palabras[j] = val
 
+            intervalo /= 2
 
+        ma.borrarPalabras(self)
+        palabras = open("Palabras.txt", "a")
+        for i in range(len(palabras)):
+            palabras.write('\n' + str(palabras[i]))
+        palabras.close()
 
+ma = ManipulacionDeArchivos
 
 class JuegoAhorcado:
     op = Oportunidades()
@@ -127,7 +145,7 @@ class JuegoAhorcado:
 
             if(int(opcion) == 2):
                 print("Gracias por jugar! :)")
-                
+
 
 
 

@@ -52,7 +52,11 @@ class ManipulacionDeArchivos:
             else:
                 cont = True
 
-        
+    def borrarPalabras(self):
+        open("Palabras.txt", "w").write("")
+
+
+
 
 
 

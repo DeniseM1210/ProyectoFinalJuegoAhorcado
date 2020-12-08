@@ -13,6 +13,19 @@ class Oportunidades:
     def getOportunidades(self):
         return self.oportunidades
 
+class ManipulacionDeArchivos:
+    def verificarArchivo(self):
+        palabras = open("Palabras.txt")
+        listaPalab = []
+
+        for linea in palabras.read().rsplit():
+            listaPalab.append(linea.upper())
+        palabras.close()
+        return len(listaPalab)
+
+    
+
+
 class JuegoAhorcado:
     op = Oportunidades()
 

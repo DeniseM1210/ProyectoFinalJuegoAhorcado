@@ -23,7 +23,39 @@ class ManipulacionDeArchivos:
         palabras.close()
         return len(listaPalab)
 
-    
+    def ingresarPalabras(self):
+        cont = False
+        op = 0
+
+        while(cont != True):
+            palabras = open("Palabras.txt", "a")
+            print("Ingrese una palabra: ")
+            nuevaPalab = input()
+
+            palabras.write('\n' + nuevaPalab)
+            palabras.close()
+            print("Se agrego correctamente la palabra :)")
+            salida = False
+
+            while(salida != True):
+                print("Desea ingresar otra palabra? ")
+                print("1.- Si")
+                print("2.- No")
+                op = input()
+                if(op == "1" or op == "2"):
+                    salida = True
+                else:
+                    print("Opcion invalida, unicamente numeros del 1 al 2")
+                    salida = False
+            if(int(op) == 1):
+                cont = False
+            else:
+                cont = True
+
+        
+
+
+
 
 
 class JuegoAhorcado:

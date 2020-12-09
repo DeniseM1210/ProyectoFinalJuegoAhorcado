@@ -172,6 +172,16 @@ class JuegoAhorcado:
             if(int(opcion) == 2):
                 print("Gracias por jugar! :)")
 
+    def obtenerPalabraAdivinada(self, palabra, letrasIng):
+        palabraSecreta = ""
+
+        for letra in palabra.lower():
+            if(letra in letrasIng):
+                palabraSecreta += " " + letra
+                continue
+            palabraSecreta += " _"
+        print(palabraSecreta)
+
 
     def busquedaLineal(self, palabra, letra):
         for letra in palabra:

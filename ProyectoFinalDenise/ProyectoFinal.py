@@ -114,6 +114,29 @@ class JuegoAhorcado:
         letrasIng = []
         self.op.iniciarOportunidades()
 
+        while(juegoA.seAdivinoLaPalabra(palabra, letrasIng) != True):
+            print("--------------------")
+            print("Te quedan " + str(self.op.getOportunidades()) + " oportunidades restantes")
+            print("Letras disponibles: ")
+            print(abecedario)
+
+            valido = False
+            while(valido != True):
+                print("Ingrese una letra: ")
+                letra = input().lower()
+
+                if(letra in letrasIng):
+                    print("Ya has ingresado esa letra")
+                elif(len(letra) > 1):
+                    print("Ingresa una letra a la vez :)")
+                elif((letra).isalpha and not letra.isalnum()):
+                    print("Ingresa unicamente letras :)")
+                elif(letra.isnumeric()):
+                    print("Ingresa unicamente letras :)")
+                else:
+                    valido = True
+                    
+
 
 
 
@@ -146,7 +169,7 @@ class JuegoAhorcado:
             if(int(opcion) == 2):
                 print("Gracias por jugar! :)")
 
-
+juegoA = JuegoAhorcado()
 
 
 

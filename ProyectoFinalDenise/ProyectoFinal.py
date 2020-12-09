@@ -135,7 +135,10 @@ class JuegoAhorcado:
                     print("Ingresa unicamente letras :)")
                 else:
                     valido = True
-                    
+            letrasIng.append(letra)
+            if((juegoA.busquedaLineal(palabra, letra.upper())) != True):
+                print("La letra ingresada no se encuentra en la palabra :(")
+                self.op.reducirOp()
 
 
 
@@ -168,6 +171,13 @@ class JuegoAhorcado:
 
             if(int(opcion) == 2):
                 print("Gracias por jugar! :)")
+
+
+    def busquedaLineal(self, palabra, letra):
+        for letra in palabra:
+            if(letra == letra):
+                return True
+        return False
 
 juegoA = JuegoAhorcado()
 

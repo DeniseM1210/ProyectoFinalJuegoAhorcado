@@ -20,8 +20,8 @@ class ManipulacionDeArchivos:
 
         for linea in palabras.read().rsplit():
             listaPalab.append(linea.upper())
-            palabras.close()
-            return len(listaPalab)
+        palabras.close()
+        return len(listaPalab)
 
     def ingresarPalabras(self):
         cont = False
@@ -141,7 +141,7 @@ class JuegoAhorcado:
                 print("La letra ingresada no se encuentra en la palabra :(")
                 self.op.reducirOp()
 
-            juegoA.obtenerPalabraAdivinada(palabra, letra)
+            juegoA.obtenerPalabraAdivinada(palabra, letrasIng)
             juegoA.obtenerLetrasDisponibles(letrasIng, abecedario)
 
 
@@ -174,6 +174,8 @@ class JuegoAhorcado:
             if(int(opcion) == 2):
                 print("Gracias por jugar! :)")
 
+            return True
+
     def obtenerPalabraAdivinada(self, palabra, letrasIng):
         palabraSecreta = ""
 
@@ -193,10 +195,12 @@ class JuegoAhorcado:
                     abecedario[i] = ""
             i += 1
 
+        return abecedario
 
-    def busquedaLineal(self, palabra, letra):
+
+    def busquedaLineal(self, palabra, letra2):
         for letra in palabra:
-            if(letra == letra):
+            if(letra == letra2):
                 return True
         return False
 
@@ -236,6 +240,7 @@ class pruebaAhorcado:
                     self.ma.ingresarPalabras()
                     palabras = self.juegoA.cargarPalabras()
                     #self.ma.ordenShellSort(palabras)
+
 
 
 a = pruebaAhorcado()

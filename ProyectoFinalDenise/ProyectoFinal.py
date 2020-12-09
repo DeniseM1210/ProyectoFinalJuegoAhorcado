@@ -140,7 +140,8 @@ class JuegoAhorcado:
                 print("La letra ingresada no se encuentra en la palabra :(")
                 self.op.reducirOp()
 
-
+            juegoA.obtenerPalabraAdivinada(palabra, letra)
+            juegoA.obtenerLetrasDisponibles(letrasIng, abecedario)
 
 
     def seAdivinoLaPalabra(self, palabra, letrasIng):
@@ -181,6 +182,15 @@ class JuegoAhorcado:
                 continue
             palabraSecreta += " _"
         print(palabraSecreta)
+
+    def obtenerLetrasDisponibles(self, letrasIng, abecedario):
+        i = 0
+
+        for letra in abecedario:
+            for letra2 in letrasIng:
+                if(letra == letra2):
+                    abecedario[i] = ""
+            i += 1
 
 
     def busquedaLineal(self, palabra, letra):

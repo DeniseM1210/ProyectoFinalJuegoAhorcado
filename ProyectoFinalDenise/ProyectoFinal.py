@@ -240,6 +240,10 @@ class pruebaAhorcado:
                     self.ma.ingresarPalabras()
                     palabras = self.juegoA.cargarPalabras()
                     #self.ma.ordenShellSort(palabras)
+                if(op == "3"):
+                    self.ma.borrarPalabras()
+                    print("Las palabras han sido borradas del archivo!")
+
 
 
 

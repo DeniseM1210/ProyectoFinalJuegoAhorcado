@@ -77,11 +77,12 @@ class ManipulacionDeArchivos:
         for i in range(len(palabras)):
             palabras.write('\n' + str(palabras[i]))
         palabras.close()
-
 ma = ManipulacionDeArchivos
+
 
 class JuegoAhorcado:
     op = Oportunidades()
+    ma = ManipulacionDeArchivos
 
     def cargarPalabras(self):
         cont = False
@@ -95,7 +96,7 @@ class JuegoAhorcado:
 
             if(len(listaPalab) == 0):
                 print("Archivo de palabras vacio, favor de ingresar palabras")
-                self.ma.ingresarPalabras()
+                self.ma.ingresarPalabras
             else:
                 cont = True
 
@@ -200,6 +201,48 @@ class JuegoAhorcado:
         return False
 
 juegoA = JuegoAhorcado()
+
+class pruebaAhorcado:
+    juegoA = JuegoAhorcado()
+    ma = ManipulacionDeArchivos()
+    def menu(self):
+        salir = False
+
+        while(salir != True):
+            salida = False
+
+            while(salida != True):
+                print("Elija una opcion: ")
+                print("1.- Verificar Archivo")
+                print("2.- Llenar el archivo")
+                print("3.- Borrar archivo")
+                print("4.- Jugar")
+                print("5.- Mostrar palabras ordenadas")
+                print("6.- Salir")
+                op = str(input())
+
+                if(op == "1" or op == "2" or op == "3" or op == "4" or op == "5" or op == "6"):
+                    salida = True
+                else:
+                    print("Opcion invalida, unicamente numeros del 1 al 6")
+                    salida = False
+
+                if(op == "1"):
+                    palabras = self.juegoA.cargarPalabras()
+                    #self.ma.ordenShellSort()
+                    print("Hay " + str(self.ma.verificarArchivo()) + " palabras")
+
+                if(op == "2"):
+                    self.ma.ingresarPalabras()
+                    palabras = self.juegoA.cargarPalabras()
+                    #self.ma.ordenShellSort(palabras)
+
+
+a = pruebaAhorcado()
+a.menu()
+
+
+
 
 
 

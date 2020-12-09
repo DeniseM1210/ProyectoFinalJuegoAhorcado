@@ -84,23 +84,25 @@ class JuegoAhorcado:
     op = Oportunidades()
     ma = ManipulacionDeArchivos
 
-    def cargarPalabras(self):
-        cont = False
+    def cargarPalabras(self, listaPalab):
+        palabras = listaPalab.split('/')
+        return palabras
+        #cont = False
 
-        while(cont != True):
-            palabras = open("Palabras.txt")
-            listaPalab = []
+        #while(cont != True):
+            #palabras = open("Palabras.txt")
+            #listaPalab = []
 
-            for linea in palabras.read().rsplit():
-                listaPalab.append(linea.upper())
+            #for linea in palabras.read().rsplit():
+                #listaPalab.append(linea.upper())
 
-            if(len(listaPalab) == 0):
-                print("Archivo de palabras vacio, favor de ingresar palabras")
-                self.ma.ingresarPalabras
-            else:
-                cont = True
+            #if(len(listaPalab) == 0):
+                #print("Archivo de palabras vacio, favor de ingresar palabras")
+                #self.ma.ingresarPalabras()
+            #else:
+                #cont = True
 
-        return listaPalab
+        #return listaPalab
 
     def elegirPalabra(self, listaPalab):
         return (listaPalab[int(random.randrange(len(listaPalab)))])
@@ -206,49 +208,44 @@ class JuegoAhorcado:
 
 juegoA = JuegoAhorcado()
 
-class pruebaAhorcado:
-    juegoA = JuegoAhorcado()
-    ma = ManipulacionDeArchivos()
-    def menu(self):
-        salir = False
+juegoA = JuegoAhorcado()
+ma = ManipulacionDeArchivos()
 
-        while(salir != True):
+salir = False
+
+while(salir != True):
+    salida = False
+
+    while(salida != True):
+        print("Elija una opcion: ")
+        print("1.- Verificar Archivo")
+        print("2.- Llenar el archivo")
+        print("3.- Borrar archivo")
+        print("4.- Jugar")
+        print("5.- Salir")
+        op = str(input())
+
+        if(op == "1" or op == "2" or op == "3" or op == "4" or op == "5" or op == "6"):
+            salida = True
+        else:
+            print("Opcion invalida, unicamente numeros del 1 al 6")
             salida = False
 
-            while(salida != True):
-                print("Elija una opcion: ")
-                print("1.- Verificar Archivo")
-                print("2.- Llenar el archivo")
-                print("3.- Borrar archivo")
-                print("4.- Jugar")
-                print("5.- Mostrar palabras ordenadas")
-                print("6.- Salir")
-                op = str(input())
+        if(op == "1"):
+            ma.verificarArchivo()
+            print("Hay " + str(ma.verificarArchivo()) + " palabras")
 
-                if(op == "1" or op == "2" or op == "3" or op == "4" or op == "5" or op == "6"):
-                    salida = True
-                else:
-                    print("Opcion invalida, unicamente numeros del 1 al 6")
-                    salida = False
-
-                if(op == "1"):
-                    palabras = self.juegoA.cargarPalabras()
-                    #self.ma.ordenShellSort()
-                    print("Hay " + str(self.ma.verificarArchivo()) + " palabras")
-
-                if(op == "2"):
-                    self.ma.ingresarPalabras()
-                    palabras = self.juegoA.cargarPalabras()
-                    #self.ma.ordenShellSort(palabras)
-                if(op == "3"):
-                    self.ma.borrarPalabras()
-                    print("Las palabras han sido borradas del archivo!")
+        if(op == "2"):
+            ma.ingresarPalabras()
+            juegoA.cargarPalabras()
+            #self.ma.ordenShellSort(palabras)
+        if(op == "3"):
+            ma.borrarPalabras()
+            print("Las palabras han sido borradas del archivo!")
 
 
 
 
-a = pruebaAhorcado()
-a.menu()
 
 
 

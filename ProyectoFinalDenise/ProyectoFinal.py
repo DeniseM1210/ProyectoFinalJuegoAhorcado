@@ -56,18 +56,8 @@ class ManipulacionDeArchivos:
     def borrarPalabras(self):
         open("Palabras.txt", "w").write("")
 
-    def obtenerPalabrasArchivo(self):
-        if(self.verificarArchivoVacio() == False):
-            palabrasArch = ""
-            palabras = open("Palabras.txt")
-            palabrasArch = palabras.read()
-            palabras.close()
-            return palabrasArch
-        else:
-            return '!'
-
     def hangman(self):
-        if(self.verificarArchivoVacio()):
+        if(self.verificarArchivo()):
             return True
         else:
             return False

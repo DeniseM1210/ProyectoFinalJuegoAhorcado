@@ -1,4 +1,5 @@
 import random
+import sys
 
 class Oportunidades:
     oportunidades = 0
@@ -185,11 +186,11 @@ class JuegoAhorcado:
                 salida = True
             else:
                 print("Opcion invalida, unicamente numeros del 1 al 2")
-                salida = True
+                salida = False
 
         if(int(opcion) == 2):
             print("Gracias por jugar! :)")
-            salida = True
+            sys.exit()
 
         return True
 

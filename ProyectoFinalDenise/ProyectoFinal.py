@@ -55,6 +55,22 @@ class ManipulacionDeArchivos:
     def borrarPalabras(self):
         open("Palabras.txt", "w").write("")
 
+    def obtenerPalabrasArchivo(self):
+        if(self.verificarArchivoVacio() == False):
+            palabrasArch = ""
+            palabras = open("Palabras.txt")
+            palabrasArch = palabras.read()
+            palabras.close()
+            return palabrasArch
+        else:
+            return '!'
+
+    def juego(self):
+        if(self.verificarArchivoVacio()):
+            return True
+        else:
+            return False
+
     def ordenShellSort(self, palabras):
         n = len(palabras)
         intervalo = n / 2
@@ -84,25 +100,23 @@ class JuegoAhorcado:
     op = Oportunidades()
     ma = ManipulacionDeArchivos
 
-    def cargarPalabras(self, listaPalab):
-        palabras = listaPalab.split('/')
-        return palabras
-        #cont = False
+    def cargarPalabras(self):
+        cont = False
+        while (cont != True):
 
-        #while(cont != True):
-            #palabras = open("Palabras.txt")
-            #listaPalab = []
+            palabras = open("Palabras.txt")
+            listaPalabras = []
 
-            #for linea in palabras.read().rsplit():
-                #listaPalab.append(linea.upper())
+            for linea in palabras.read().rsplit():
+                listaPalabras.append(linea.upper())
 
-            #if(len(listaPalab) == 0):
-                #print("Archivo de palabras vacio, favor de ingresar palabras")
-                #self.ma.ingresarPalabras()
-            #else:
-                #cont = True
+            if (len(listaPalabras) == 0):
+                print("Archivo vacio, porfavor ingresa algunas palabras")
+                self.ma.ingresarPalabras()
+            else:
+                cont = True
 
-        #return listaPalab
+        return listaPalabras
 
     def elegirPalabra(self, listaPalab):
         return (listaPalab[int(random.randrange(len(listaPalab)))])
@@ -153,30 +167,30 @@ class JuegoAhorcado:
                 while(self.op.getOportunidades() > 0):
                     return False
 
-            if(self.op.getOportunidades() == 0):
-                print("No se ha adivinado la palabra :(")
-                print("La palabra secreta era: " + palabra)
+        if(self.op.getOportunidades() == 0):
+            print("No se ha adivinado la palabra :(")
+            print("La palabra secreta era: " + palabra)
+        else:
+            print("Felicidades has ganado el juego del Ahorcado! :)")
+
+        salida = False
+
+        while(salida != True):
+            print("Desea jugar de nuevo?")
+            print("1.- Si :)")
+            print("2.- No :(")
+            opcion = input()
+
+            if(opcion == "1" or opcion == "2"):
+                salida = True
             else:
-                print("Felicidades has ganado el juego del Ahorcado! :)")
+                print("Opcion invalida, unicamente numeros del 1 al 2")
+                salida == False
 
-            salida = False
+        if(int(opcion) == 2):
+            print("Gracias por jugar! :)")
 
-            while(salida != True):
-                print("Desea jugar de nuevo?")
-                print("1.- Si :)")
-                print("2.- No :(")
-                opcion = input()
-
-                if(opcion == "1" or opcion == "2"):
-                    salida = True
-                else:
-                    print("Opcion invalida, unicamente numeros del 1 al 2")
-                    salida == False
-
-            if(int(opcion) == 2):
-                print("Gracias por jugar! :)")
-
-            return True
+        return True
 
     def obtenerPalabraAdivinada(self, palabra, letrasIng):
         palabraSecreta = ""
@@ -237,11 +251,18 @@ while(salir != True):
 
         if(op == "2"):
             ma.ingresarPalabras()
-            juegoA.cargarPalabras()
-            #self.ma.ordenShellSort(palabras)
         if(op == "3"):
             ma.borrarPalabras()
             print("Las palabras han sido borradas del archivo!")
+        if(op == "4"):
+            palabras = juegoA.cargarPalabras()
+            palabra = juegoA.elegirPalabra(palabras)
+            juegoA.inicioAhorcado(palabra)
+        if(op == "5"):
+            print("Gracias por jugar! :)")
+            salir = True
+            
+
 
 
 

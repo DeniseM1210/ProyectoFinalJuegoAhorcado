@@ -153,7 +153,7 @@ class JuegoAhorcado:
                 else:
                     valido = True
             letrasIng.append(letra)
-            if((juegoA.busquedaBinaria(letrasIng, letra)) != True):
+            if((juegoA.busquedaLineal(palabra, letra.upper())) != True):
                 print("La letra ingresada no se encuentra en la palabra :(")
                 self.op.reducirOp()
 
@@ -185,10 +185,11 @@ class JuegoAhorcado:
                 salida = True
             else:
                 print("Opcion invalida, unicamente numeros del 1 al 2")
-                salida == False
+                salida = True
 
         if(int(opcion) == 2):
             print("Gracias por jugar! :)")
+            salida = True
 
         return True
 
@@ -213,19 +214,11 @@ class JuegoAhorcado:
 
         return abecedario
 
-    def busquedaBinaria(self, array, letra):
-        inicio = 0
-        final = len(array) - 1
-
-        while(inicio <= final):
-            puntero = (inicio + final) // 2
-            if letra == array[puntero]:
-                return 1
-            elif(letra > array[puntero]):
-                inicio = puntero + 1
-            else:
-                final = puntero - 1
-        return 0
+    def busquedaLineal(self, palabra, letra2):
+        for letra in palabra:
+            if(letra == letra2):
+                return True
+        return False
 
 juegoA = JuegoAhorcado()
 

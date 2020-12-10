@@ -65,7 +65,7 @@ class ManipulacionDeArchivos:
         else:
             return '!'
 
-    def juego(self):
+    def hangman(self):
         if(self.verificarArchivoVacio()):
             return True
         else:
@@ -112,7 +112,7 @@ class JuegoAhorcado:
 
             if (len(listaPalabras) == 0):
                 print("Archivo vacio, porfavor ingresa algunas palabras")
-                self.ma.ingresarPalabras()
+                ma.ingresarPalabras()
             else:
                 cont = True
 
@@ -153,7 +153,7 @@ class JuegoAhorcado:
                 else:
                     valido = True
             letrasIng.append(letra)
-            if((juegoA.busquedaLineal(palabra, letra.upper())) != True):
+            if((juegoA.busquedaBinaria(letrasIng, letra)) != True):
                 print("La letra ingresada no se encuentra en la palabra :(")
                 self.op.reducirOp()
 
@@ -213,12 +213,19 @@ class JuegoAhorcado:
 
         return abecedario
 
+    def busquedaBinaria(self, array, letra):
+        inicio = 0
+        final = len(array) - 1
 
-    def busquedaLineal(self, palabra, letra2):
-        for letra in palabra:
-            if(letra == letra2):
-                return True
-        return False
+        while(inicio <= final):
+            puntero = (inicio + final) // 2
+            if letra == array[puntero]:
+                return 1
+            elif(letra > array[puntero]):
+                inicio = puntero + 1
+            else:
+                final = puntero - 1
+        return 0
 
 juegoA = JuegoAhorcado()
 
@@ -261,7 +268,7 @@ while(salir != True):
         if(op == "5"):
             print("Gracias por jugar! :)")
             salir = True
-            
+
 
 
 
